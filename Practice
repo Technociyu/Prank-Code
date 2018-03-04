@@ -1,0 +1,54 @@
+
+namespace DrunkPC
+{
+    //Application name: Drunk PC
+    //Description: Application that generates erratic mouse and keyboard movements and input system sound to confuse the user
+    //Topics:
+    //Threads
+    //System.Windows.Forms namespace and assembly
+    //Hidden Application
+
+    class Program
+    {            //Entry point for prank application
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Drunk Application");
+
+            Thread sampleThread1 = new Thread(new ThreadStart(SampleThread1)); //function placed 
+            sampleThread1.Start();
+
+            Thread sampleThread2 = new Thread(new ThreadStart(SampleThread2)); //function placed 
+            sampleThread2.Start();
+
+
+            Console.ReadKey(); //press key and the while loop quits
+            sampleThread1.Abort();
+            sampleThread2.Abort();
+
+        }
+        //another sample thread
+        static void SampleThread2()
+
+        {
+            while (true)
+            {
+                Console.WriteLine("Hello there from thread 2.");
+                Thread.Sleep(500);
+            }
+        }
+
+        //this is a sample thread function
+
+        static void SampleThread1()
+
+        {
+            while(true)
+            {
+                Console.WriteLine("Hello there from thread 1.");
+                Thread.Sleep(1000);
+            }
+        }
+
+    }
+}
